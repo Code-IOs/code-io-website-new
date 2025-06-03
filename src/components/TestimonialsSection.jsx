@@ -1,16 +1,18 @@
-const TestimonialsSection = () => {
+import React from "react";
+
+const TestimonialsSection = React.memo(() => {
   const testimonials = [
     {
       name: "Sarah Johnson",
       company: "Local Bakery Co.",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&format=webp",
       quote: "Code IO transformed our online presence completely. Our new website increased our orders by 150% in just 3 months!",
       rating: 5
     },
     {
       name: "Michael Chen",
       company: "Tech Startup",
-      image: "https://images.unsplash.com/photo-1497215842964-222b430dc094",
+      image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&format=webp",
       quote: "The mobile app they built for us is exactly what we envisioned. Professional, fast, and our users love it!",
       rating: 5
     }
@@ -21,10 +23,10 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            What Our <span className="gradient-text">Clients Say</span>
+            อะไรคือ <span className="gradient-text">ความเห็นจากลูกค้า</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied clients have to say about working with Code IO.
+            อย่าเชื่อแค่คำพูดของเรา นี่คือสิ่งที่ลูกค้าที่พึงพอใจของเราพูดถึงการทำงานกับ Code IO
           </p>
         </div>
 
@@ -67,6 +69,6 @@ const TestimonialsSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default TestimonialsSection;

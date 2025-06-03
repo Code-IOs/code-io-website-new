@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const FAQSection = () => {
+const FAQSection = React.memo(() => {
   const [openItem, setOpenItem] = useState(null);
 
   const faqs = [
@@ -68,6 +68,6 @@ const FAQSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default FAQSection;

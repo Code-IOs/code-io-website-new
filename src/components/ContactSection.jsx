@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ContactSection = () => {
+const ContactSection = React.memo(() => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,7 +16,6 @@ const ContactSection = () => {
     setSubmitStatus(null);
 
     try {
-      // Create FormData for Netlify Forms
       const formDataToSubmit = new FormData();
       formDataToSubmit.append('form-name', 'contact');
       formDataToSubmit.append('name', formData.name);
@@ -56,10 +55,9 @@ const ContactSection = () => {
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: `url('https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg')`,
+          backgroundImage: `url('https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?w=1200&format=webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       />
       
@@ -128,7 +126,6 @@ const ContactSection = () => {
               data-netlify="true"
               netlify-honeypot="bot-field"
             >
-              {/* Hidden fields for Netlify */}
               <input type="hidden" name="form-name" value="contact" />
               <p className="hidden">
                 <label>
@@ -136,7 +133,6 @@ const ContactSection = () => {
                 </label>
               </p>
 
-              {/* Success Message */}
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg">
                   <div className="flex items-center space-x-2">
@@ -148,7 +144,6 @@ const ContactSection = () => {
                 </div>
               )}
 
-              {/* Error Message */}
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg">
                   <div className="flex items-center space-x-2">
@@ -239,6 +234,6 @@ const ContactSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ContactSection;

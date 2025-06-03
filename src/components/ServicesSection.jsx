@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 
-const ServicesSection = () => {
+const ServicesSection = React.memo(() => {
   const services = [
     {
       title: "Web Development",
       description: "Custom websites and web applications built with modern technologies like React, Node.js, and cloud infrastructure.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&format=webp",
       features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Modern Tech Stack"]
     },
     {
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android that deliver exceptional user experiences.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&format=webp",
       features: ["Cross-Platform", "Native Performance", "App Store Ready", "Push Notifications"]
     },
     {
       title: "UI/UX Design",
       description: "Beautiful, intuitive designs that convert visitors into customers through strategic user experience optimization.",
-      image: "https://images.unsplash.com/photo-1586717799252-bd134ad00e26",
+      image: "https://images.unsplash.com/photo-1586717799252-bd134ad00e26?w=800&format=webp",
       features: ["User Research", "Wireframing", "Prototyping", "Design Systems"]
     }
   ];
@@ -38,14 +38,16 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="glass-card rounded-2xl p-8 service-card group"
+              className="glass-card rounded-2xl p-8"
             >
               <div className="relative overflow-hidden rounded-xl mb-6">
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  className="w-full h-48 object-cover"
                 />
+                <div className="absolute inset-0 bg-gray-700 animate-pulse" style={{ display: 'none' }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-prussian/70 to-transparent"></div>
               </div>
               
@@ -68,6 +70,6 @@ const ServicesSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ServicesSection;

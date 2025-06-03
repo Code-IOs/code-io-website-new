@@ -1,32 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { throttle } from 'lodash';
 
-const Navigation = () => {
+const Navigation = React.memo(() => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       setIsScrolled(window.scrollY > 50);
-    };
+    }, 100);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      handleScroll.cancel();
+    };
   }, []);
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = useCallback((sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
-  };
+  }, []);
+
+  const isLowPerformance = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'glass py-4' : 'py-6'
-    }`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass py-4' : 'py-6'} ${isLowPerformance ? 'no-blur' : ''}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="text-2xl font-bold gradient-text">
           Code<span className="text-fluorescent">IO</span>
         </div>
         
-        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           <button onClick={() => scrollToSection('home')} className="hover:text-fluorescent transition-colors">Home</button>
           <button onClick={() => scrollToSection('services')} className="hover:text-fluorescent transition-colors">Services</button>
@@ -35,7 +38,6 @@ const Navigation = () => {
           <button onClick={() => scrollToSection('contact')} className="hover:text-fluorescent transition-colors">Contact</button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button 
           className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -45,7 +47,6 @@ const Navigation = () => {
           </svg>
         </button>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 w-full glass md:hidden">
             <div className="flex flex-col p-6 space-y-4">
@@ -60,6 +61,6 @@ const Navigation = () => {
       </div>
     </nav>
   );
-};
+});
 
 export default Navigation;

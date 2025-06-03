@@ -1,4 +1,6 @@
-const AboutSection = () => {
+import React from "react";
+
+const AboutSection = React.memo(() => {
   return (
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-6">
@@ -65,6 +67,5 @@ const AboutSection = () => {
       </div>
     </section>
   );
-};
-
+});
 export default AboutSection;
