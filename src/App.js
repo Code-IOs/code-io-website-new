@@ -16,7 +16,6 @@ export default function App() {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
-      <TestimonialsSection />
       <ContactSection />
       <FAQSection />
       <Footer />
