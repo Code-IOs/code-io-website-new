@@ -78,7 +78,7 @@ const ContactSection = React.memo(() => {
                   </div>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-gray-400">code-io@gmail.com</div>
+                    <div className="text-gray-400">codeio143@gmail.com</div>
                   </div>
                 </div>
                 
