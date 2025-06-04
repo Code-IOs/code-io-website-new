@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL_USER, // Your email address
         pass: process.env.EMAIL_PASS, // Your email password or app-specific password 
-    },
+    }
     });
 
     // Handle form submission
