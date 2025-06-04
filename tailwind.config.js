@@ -42,11 +42,11 @@ module.exports = {
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         float: {
@@ -54,7 +54,7 @@ module.exports = {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(31, 182, 255, 0.3)' },
+          '100%': { boxShadow: '0 0 20px rgba(31, 182, 255, 0.3)' },
           '100%': { boxShadow: '0 0 30px rgba(31, 182, 255, 0.6)' },
         },
       },

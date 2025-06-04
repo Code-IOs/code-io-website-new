@@ -34,7 +34,6 @@ const Navigation = React.memo(() => {
           <button onClick={() => scrollToSection('home')} className="hover:text-fluorescent transition-colors">Home</button>
           <button onClick={() => scrollToSection('services')} className="hover:text-fluorescent transition-colors">Services</button>
           <button onClick={() => scrollToSection('about')} className="hover:text-fluorescent transition-colors">About</button>
-          <button onClick={() => scrollToSection('testimonials')} className="hover:text-fluorescent transition-colors"></button>
           <button onClick={() => scrollToSection('contact')} className="hover:text-fluorescent transition-colors">Contact</button>
         </div>
 
@@ -53,7 +52,6 @@ const Navigation = React.memo(() => {
               <button onClick={() => scrollToSection('home')} className="hover:text-fluorescent transition-colors text-left">Home</button>
               <button onClick={() => scrollToSection('services')} className="hover:text-fluorescent transition-colors text-left">Services</button>
               <button onClick={() => scrollToSection('about')} className="hover:text-fluorescent transition-colors text-left">About</button>
-              <button onClick={() => scrollToSection('testimonials')} className="hover:text-fluorescent transition-colors text-left"></button>
               <button onClick={() => scrollToSection('contact')} className="hover:text-fluorescent transition-colors text-left">Contact</button>
             </div>
           </div>
