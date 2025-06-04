@@ -16,31 +16,24 @@ const ContactSection = React.memo(() => {
     setSubmitStatus(null);
 
     try {
-      const formDataToSubmit = new FormData();
-      formDataToSubmit.append('form-name', 'contact');
-      formDataToSubmit.append('name', formData.name);
-      formDataToSubmit.append('email', formData.email);
-      formDataToSubmit.append('company', formData.company);
-      formDataToSubmit.append('message', formData.message);
+    const response = await fetch('http://localhost:3001/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
 
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataToSubmit).toString()
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', company: '', message: '' });
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+    if (response.ok) {
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } else {
+      throw new Error('Form submission failed');
     }
+  } catch (error) {
+    console.error('Form submission error:', error);
+    setSubmitStatus('error');
+  } finally {
+    setIsSubmitting(false);
+  }
   };
 
   const handleChange = (e) => {
